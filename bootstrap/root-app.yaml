@@ -9,6 +9,8 @@ spec:
     repoURL: https://github.com/devops-hcmus/gitops
     targetRevision: main
     path: apps
+    directory:
+      recurse: true
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
