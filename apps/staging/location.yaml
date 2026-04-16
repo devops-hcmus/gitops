@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: staging-location
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/devops-hcmus/yas-cd
+    targetRevision: main
+    path: k8s/charts/location
+    helm:
+      valueFiles:
+        - values.yaml
+        - https://raw.githubusercontent.com/devops-hcmus/gitops/main/clusters/staging/location/values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: staging
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

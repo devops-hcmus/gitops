@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: staging-promotion
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/devops-hcmus/yas-cd
+    targetRevision: main
+    path: k8s/charts/promotion
+    helm:
+      valueFiles:
+        - values.yaml
+        - https://raw.githubusercontent.com/devops-hcmus/gitops/main/clusters/staging/promotion/values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: staging
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
