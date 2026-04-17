@@ -1,0 +1,114 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-api-config
+  namespace: staging
+data:
+  default.conf: |
+    server {
+      listen 80;
+
+      # Kubernetes CoreDNS
+      resolver 10.96.0.10 valid=10s;
+
+      location /media/ {
+        set $upstream "media.staging.svc.cluster.local";
+        proxy_pass http://$upstream;
+      }
+      location /product/ {
+        set $upstream "product.staging.svc.cluster.local";
+        proxy_pass http://$upstream;
+      }
+      location /customer/ {
+        set $upstream "customer.staging.svc.cluster.local";
+        proxy_pass http://$upstream;
+      }
+      location /cart/ {
+        set $upstream "cart.staging.svc.cluster.local";
+        proxy_pass http://$upstream;
+      }
+      location /rating/ {
+        set $upstream "rating.staging.svc.cluster.local";
+        proxy_pass http://$upstream;
+      }
+      location /order/ {
+        set $upstream "order.staging.svc.cluster.local";
+        proxy_pass http://$upstream;
+      }
+      location /location/ {
+        set $upstream "location.staging.svc.cluster.local";
+        proxy_pass http://$upstream;
+      }
+      location /inventory/ {
+        set $upstream "inventory.staging.svc.cluster.local";
+        proxy_pass http://$upstream;
+      }
+      location /tax/ {
+        set $upstream "tax.staging.svc.cluster.local";
+        proxy_pass http://$upstream;
+      }
+      location /promotion/ {
+        set $upstream "promotion.staging.svc.cluster.local";
+        proxy_pass http://$upstream;
+      }
+      location /search/ {
+        set $upstream "search.staging.svc.cluster.local";
+        proxy_pass http://$upstream;
+      }
+      location /payment/ {
+        set $upstream "payment.staging.svc.cluster.local";
+        proxy_pass http://$upstream;
+      }
+      location /webhook/ {
+        set $upstream "webhook.staging.svc.cluster.local";
+        proxy_pass http://$upstream;
+      }
+      location /sampledata/ {
+        set $upstream "sampledata.staging.svc.cluster.local";
+        proxy_pass http://$upstream;
+      }
+      location /recommendation/ {
+        set $upstream "recommendation.staging.svc.cluster.local";
+        proxy_pass http://$upstream;
+      }
+    }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: staging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.25-alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: config
+              mountPath: /etc/nginx/conf.d
+      volumes:
+        - name: config
+          configMap:
+            name: nginx-api-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  namespace: staging
+spec:
+  selector:
+    app: nginx
+  ports:
+    - port: 80
+      targetPort: 80

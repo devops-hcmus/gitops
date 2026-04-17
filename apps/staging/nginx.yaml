@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: staging-nginx
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/devops-hcmus/gitops
+    targetRevision: main
+    path: clusters/staging/nginx
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: staging
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
