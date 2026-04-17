@@ -5,14 +5,17 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://github.com/devops-hcmus/yas-cd
-    targetRevision: main
-    path: k8s/charts/location
-    helm:
-      valueFiles:
-        - values.yaml
-        - https://raw.githubusercontent.com/devops-hcmus/gitops/main/clusters/staging/location/values.yaml
+  sources:
+    - repoURL: https://github.com/devops-hcmus/yas-cd
+      targetRevision: main
+      path: k8s/charts/location
+      helm:
+        valueFiles:
+          - values.yaml
+          - $values/clusters/staging/location/values.yaml
+    - repoURL: https://github.com/devops-hcmus/gitops
+      targetRevision: main
+      ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: staging
