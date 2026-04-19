@@ -9,7 +9,7 @@ spec:
   project: default
   sources:
     - repoURL: https://github.com/devops-hcmus/yas-cd
-      targetRevision: main
+      targetRevision: v0.0.2
       path: k8s/charts/backoffice-bff
       helm:
         valueFiles:
