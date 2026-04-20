@@ -9,7 +9,7 @@ spec:
   project: default
   sources:
     - repoURL: https://github.com/devops-hcmus/yas-cd
-      targetRevision: v0.0.9
+      targetRevision: v0.1.0
       path: k8s/charts/storefront-bff
       helm:
         valueFiles:
