@@ -1,3 +1,5 @@
 ui:
   image:
     tag: v0.1.0
+backend:
+  replicaCount: 0

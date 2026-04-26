@@ -3,3 +3,4 @@ backend:
     tag: v0.1.0
   ingress:
     host: backoffice.staging.yas.local.com
+  replicaCount: 0

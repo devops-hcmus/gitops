@@ -1,16 +1,4 @@
-urls: "[{ url: 'http://product:8080/v3/api-docs', name: 'Product' },
-      { url: 'http://media:8080/v3/api-docs', name: 'Media' },
-      { url: 'http://customer:8080/v3/api-docs', name: 'Customer' },
-      { url: 'http://cart:8080/v3/api-docs', name: 'Cart'},
-      { url: 'http://rating:8080/v3/api-docs', name: 'Rating' },
-      { url: 'http://order:8080/v3/api-docs', name: 'Order'},
-      { url: 'http://payment:8080/v3/api-docs', name: 'Payment'},
-      { url: 'http://location:8080/v3/api-docs', name: 'Location'},
-      { url: 'http://inventory:8080/v3/api-docs', name: 'Inventory'},
-      { url: 'http://tax:8080/v3/api-docs', name: 'Tax' },
-      { url: 'http://promotion:8080/v3/api-docs', name: 'Promotion'},
-      { url: 'http://search:8080/v3/api-docs', name: 'Search'}]"
-
+urls: "[{ url: 'http://product:8080/v3/api-docs', name: 'Product' }, { url: 'http://media:8080/v3/api-docs', name: 'Media' }, { url: 'http://customer:8080/v3/api-docs', name: 'Customer' }, { url: 'http://cart:8080/v3/api-docs', name: 'Cart'}, { url: 'http://rating:8080/v3/api-docs', name: 'Rating' }, { url: 'http://order:8080/v3/api-docs', name: 'Order'}, { url: 'http://payment:8080/v3/api-docs', name: 'Payment'}, { url: 'http://location:8080/v3/api-docs', name: 'Location'}, { url: 'http://inventory:8080/v3/api-docs', name: 'Inventory'}, { url: 'http://tax:8080/v3/api-docs', name: 'Tax' }, { url: 'http://promotion:8080/v3/api-docs', name: 'Promotion'}, { url: 'http://search:8080/v3/api-docs', name: 'Search'}]"
 ingress:
   host: api.staging.yas.local.com
   hosts:
@@ -18,3 +6,5 @@ ingress:
       paths:
         - path: /swagger-ui
           pathType: ImplementationSpecific
+backend:
+  replicaCount: 0
