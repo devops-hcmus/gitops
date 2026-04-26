@@ -9,7 +9,7 @@ spec:
   project: default
   sources:
     - repoURL: https://github.com/devops-hcmus/yas-cd
-      targetRevision: v0.1.0
+      targetRevision: v0.1.1
       path: k8s/charts/inventory
       helm:
         valueFiles:
