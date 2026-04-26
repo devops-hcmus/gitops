@@ -1,4 +1,4 @@
 ui:
   image:
-    tag: 39ade9d
+    tag: ec3cfd1
   replicaCount: 1
