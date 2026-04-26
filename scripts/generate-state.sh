@@ -1,3 +1,9 @@
+#!/bin/bash
+# Generate initial state.yaml with all services
+
+cd /home/dang/HCMUS/year3/semester2/devops/pj2/gitops
+
+cat > state.yaml << 'EOF'
 # GitOps Environment State Management
 # This file tracks the replica count for each service in each environment
 # Updated automatically during deployments to enable mutual-exclusive scaling
@@ -13,7 +19,7 @@ dev:
   nginx: 1
   order: 1
   payment: 1
-  product: 2
+  product: 1
   promotion: 1
   rating: 1
   recommendation: 1
@@ -23,6 +29,7 @@ dev:
   storefront-ui: 1
   tax: 1
   webhook: 1
+
 staging:
   backoffice-bff: 1
   backoffice-ui: 1
@@ -45,3 +52,6 @@ staging:
   swagger-ui: 1
   tax: 1
   webhook: 1
+EOF
+
+echo "✓ Created state.yaml with all services"
