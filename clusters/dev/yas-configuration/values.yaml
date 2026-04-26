@@ -1,4 +1,5 @@
 reloader:
   reloader:
+    enableHA: true
     deployment:
       replicas: 1
