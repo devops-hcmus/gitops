@@ -1,3 +1,4 @@
 backend:
   image:
-    tag: main
+    tag: ec3cfd1
+  replicaCount: 1
