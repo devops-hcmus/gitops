@@ -1,0 +1,48 @@
+# GitOps Environment State Management
+# This file tracks the replica count for each service in each environment
+# Updated automatically during deployments to enable mutual-exclusive scaling
+
+dev:
+  backoffice-bff: 1
+  backoffice-ui: 1
+  cart: 1
+  customer: 1
+  inventory: 1
+  location: 1
+  media: 1
+  nginx: 1
+  order: 1
+  payment: 1
+  product: 1
+  promotion: 1
+  rating: 1
+  recommendation: 1
+  sampledata: 1
+  search: 1
+  storefront-bff: 1
+  storefront-ui: 1
+  tax: 1
+  webhook: 1
+
+staging:
+  backoffice-bff: 1
+  backoffice-ui: 1
+  cart: 1
+  customer: 1
+  inventory: 1
+  location: 1
+  media: 1
+  nginx: 1
+  order: 1
+  payment: 1
+  product: 1
+  promotion: 1
+  rating: 1
+  recommendation: 1
+  sampledata: 1
+  search: 1
+  storefront-bff: 1
+  storefront-ui: 1
+  swagger-ui: 1
+  tax: 1
+  webhook: 1
