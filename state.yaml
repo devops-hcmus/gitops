@@ -23,6 +23,7 @@ dev:
   storefront-ui: 1
   tax: 1
   webhook: 1
+  yas-configuration: 1
 staging:
   backoffice-bff: 1
   backoffice-ui: 1
@@ -45,3 +46,4 @@ staging:
   swagger-ui: 1
   tax: 1
   webhook: 1
+  yas-configuration: 1

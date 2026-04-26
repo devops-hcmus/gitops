@@ -1,0 +1,4 @@
+reloader:
+  reloader:
+    deployment:
+      replicas: 0
