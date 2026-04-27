@@ -1,4 +1,4 @@
 backend:
   image:
-    tag: efa37c3
+    tag: c47bcf7
   replicaCount: 1

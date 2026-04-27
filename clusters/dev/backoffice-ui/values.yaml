@@ -1,4 +1,4 @@
 ui:
   image:
     tag: a810f07
-  replicaCount: 0
+  replicaCount: 1
