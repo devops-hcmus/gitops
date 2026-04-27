@@ -2,3 +2,9 @@ backend:
   image:
     tag: "0e16117"
   replicaCount: 1
+  ingress:
+    enabled: true
+    className: nginx
+    host: api.yas.local.com
+    path: /media
+    pathType: ImplementationSpecific
