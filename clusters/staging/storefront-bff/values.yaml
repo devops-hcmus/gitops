@@ -1,6 +1,6 @@
 backend:
   image:
-    tag: v0.1.2
+    tag: v0.1.3
   ingress:
     host: storefront.staging.yas.local.com
-  replicaCount: 0
+  replicaCount: 1
