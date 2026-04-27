@@ -10,7 +10,7 @@ backend:
     pathType: ImplementationSpecific
   initContainers:
     - name: copy-sample-images
-      image: /yas-sampledata:d7b907c
+      image: danzgne/yas-sampledata:f5d26bd
       command: ["sh", "-c", "cp -r /sample-images/sample /images/ && echo 'Images copied'"]
       volumeMounts:
         - name: media-images
