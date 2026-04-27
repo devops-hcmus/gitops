@@ -13,7 +13,7 @@ dev:
   nginx: 1
   order: 1
   payment: 1
-  product: 2
+  product: 1
   promotion: 1
   rating: 1
   recommendation: 1
