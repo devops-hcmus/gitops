@@ -6,4 +6,4 @@ ingress:
       paths:
         - path: /swagger-ui
           pathType: ImplementationSpecific
-replicaCount: 1
+replicaCount: 0
