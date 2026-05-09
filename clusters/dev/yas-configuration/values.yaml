@@ -3,7 +3,6 @@ reloader:
     enableHA: true
     deployment:
       replicas: 1
-
 mediaApplicationConfig:
   yas:
     publicUrl: http://api.dev.yas.local.com/media

@@ -3,7 +3,6 @@ reloader:
     enableHA: true
     deployment:
       replicas: 0
-
 mediaApplicationConfig:
   yas:
     publicUrl: http://api.staging.yas.local.com/media
