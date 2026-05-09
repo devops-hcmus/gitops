@@ -21,6 +21,7 @@ dev:
   search: 1
   storefront-bff: 1
   storefront-ui: 1
+  swagger-ui: 1
   tax: 1
   webhook: 1
   yas-configuration: 1
