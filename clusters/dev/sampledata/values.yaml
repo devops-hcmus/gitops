@@ -1,4 +1,4 @@
 backend:
   image:
     tag: "f5d26bd"
-  replicaCount: 1
+  replicaCount: 0

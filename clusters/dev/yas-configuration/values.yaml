@@ -2,4 +2,4 @@ reloader:
   reloader:
     enableHA: true
     deployment:
-      replicas: 1
+      replicas: 0
