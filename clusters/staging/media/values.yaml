@@ -2,3 +2,27 @@ backend:
   image:
     tag: v0.1.3
   replicaCount: 0
+  ingress:
+    enabled: true
+    className: nginx
+    host: api.staging.yas.local.com
+    path: /media
+    pathType: ImplementationSpecific
+  initContainers:
+    - name: copy-sample-images
+      image: danzgne/yas-sampledata:f5d26bd
+      command: ["sh", "-c", "cp -r /sample-images/sample /images/ && echo 'Images copied'"]
+      volumeMounts:
+        - name: media-images
+          mountPath: /images
+  extraVolumes:
+    - name: media-application
+      configMap:
+        name: media-application-configmap
+    - name: media-images
+      emptyDir: {}
+  extraVolumeMounts:
+    - name: media-application
+      mountPath: /opt/yas/media
+    - name: media-images
+      mountPath: /images

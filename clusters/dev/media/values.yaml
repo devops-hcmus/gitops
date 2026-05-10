@@ -5,7 +5,7 @@ backend:
   ingress:
     enabled: true
     className: nginx
-    host: api.yas.local.com
+    host: api.dev.yas.local.com
     path: /media
     pathType: ImplementationSpecific
   initContainers:
