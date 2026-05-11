@@ -1,7 +1,7 @@
 backend:
   image:
     tag: "d7b907c"
-  replicaCount: 0
+  replicaCount: 1
   ingress:
     enabled: true
     className: nginx
