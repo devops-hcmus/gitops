@@ -1,4 +1,4 @@
 backend:
   image:
-    tag: "91b4b86"
-  replicaCount: 0
+    tag: "0b1bf8c"
+  replicaCount: 1
