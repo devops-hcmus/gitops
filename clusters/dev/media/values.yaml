@@ -1,6 +1,6 @@
 backend:
   image:
-    tag: "d7b907c"
+    tag: "98da6b8"
   replicaCount: 1
   ingress:
     enabled: true
