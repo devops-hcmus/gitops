@@ -1,6 +1,6 @@
 backend:
   image:
-    tag: cb5e220
+    tag: cbd1419
   replicaCount: 1
   ingress:
     host: backoffice.dev.yas.local.com
