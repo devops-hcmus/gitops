@@ -1,0 +1,2 @@
+# Local backup of disabled ArgoCD Application manifests (not synced to remote)
+apps/_backup/

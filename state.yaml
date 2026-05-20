@@ -8,22 +8,22 @@ dev:
   cart: 1
   customer: 1
   inventory: 1
-  location: 1
+  # location: 1
   media: 1
   nginx: 1
   order: 1
-  payment: 1
+  # payment: 1
   product: 1
-  promotion: 1
-  rating: 1
-  recommendation: 1
+  # promotion: 1
+  # rating: 1
+  # recommendation: 1
   sampledata: 1
   search: 1
   storefront-bff: 1
   storefront-ui: 1
   swagger-ui: 1
   tax: 1
-  webhook: 1
+  # webhook: 1
   yas-configuration: 1
 staging:
   backoffice-bff: 1
@@ -31,20 +31,20 @@ staging:
   cart: 1
   customer: 1
   inventory: 1
-  location: 1
+  # location: 1
   media: 1
   nginx: 1
   order: 1
-  payment: 1
+  # payment: 1
   product: 1
-  promotion: 1
-  rating: 1
-  recommendation: 1
+  # promotion: 1
+  # rating: 1
+  # recommendation: 1
   sampledata: 1
   search: 1
   storefront-bff: 1
   storefront-ui: 1
   swagger-ui: 1
   tax: 1
-  webhook: 1
+  # webhook: 1
   yas-configuration: 1
