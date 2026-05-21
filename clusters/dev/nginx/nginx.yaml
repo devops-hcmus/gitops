@@ -139,6 +139,11 @@ metadata:
     namespace: dev
     annotations:
         nginx.ingress.kubernetes.io/use-regex: "true"
+        # Istio sidecar làm response header lớn — tránh 502 từ ingress-nginx
+        nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
+        nginx.ingress.kubernetes.io/proxy-buffers-number: "4"
+        nginx.ingress.kubernetes.io/proxy-busy-buffers-size: "256k"
+        nginx.ingress.kubernetes.io/proxy-body-size: "30m"
 spec:
     ingressClassName: nginx
     rules:

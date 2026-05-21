@@ -3,11 +3,7 @@ backend:
     tag: v0.1.6
   replicaCount: 0
   ingress:
-    enabled: true
-    className: nginx
-    host: api.staging.yas.local.com
-    path: /media
-    pathType: ImplementationSpecific
+    enabled: false
   initContainers:
     - name: copy-sample-images
       image: danzgne/yas-sampledata:f5d26bd

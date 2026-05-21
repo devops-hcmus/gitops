@@ -2,12 +2,10 @@ backend:
   image:
     tag: "cbd1419"
   replicaCount: 1
+  # Route qua nginx API gateway (gitops/clusters/dev/nginx) — có proxy_buffer cho Istio sidecar.
+  # Ingress riêng /media → media trực tiếp gây 502 (ảnh, swagger api-docs) khi bật mesh.
   ingress:
-    enabled: true
-    className: nginx
-    host: api.dev.yas.local.com
-    path: /media
-    pathType: ImplementationSpecific
+    enabled: false
   initContainers:
     - name: copy-sample-images
       image: danzgne/yas-sampledata:cbd1419
