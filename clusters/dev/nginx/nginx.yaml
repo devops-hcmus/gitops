@@ -1,159 +1,73 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-    name: nginx-api-config
-    namespace: dev
+  name: nginx-api-config
+  namespace: dev
 data:
-    default.conf: |
-        server {
-          listen 80;
-
-          # Kubernetes CoreDNS
-          resolver 10.96.0.10 valid=10s;
-
-          # Proxy settings to prevent upstream connection issues
-          proxy_connect_timeout 60s;
-          proxy_send_timeout 60s;
-          proxy_read_timeout 60s;
-          proxy_buffering on;
-          proxy_buffer_size 128k;
-          proxy_buffers 4 256k;
-          proxy_busy_buffers_size 256k;
-          proxy_max_temp_file_size 2048m;
-          proxy_temp_file_write_size 256k;
-          
-          # Enable keepalive to upstream servers
-          keepalive_timeout 65s;
-          proxy_http_version 1.1;
-          proxy_set_header Connection "";
-          # Error handling
-          proxy_next_upstream error timeout http_502 http_503 http_504;
-          proxy_next_upstream_tries 2;
-
-          location /media/ {
-            set $upstream "media.dev.svc.cluster.local";
-            proxy_pass http://$upstream;
-          }
-          location /product/ {
-            set $upstream "product.dev.svc.cluster.local";
-            proxy_pass http://$upstream;
-          }
-          location /customer/ {
-            set $upstream "customer.dev.svc.cluster.local";
-            proxy_pass http://$upstream;
-          }
-          location /cart/ {
-            set $upstream "cart.dev.svc.cluster.local";
-            proxy_pass http://$upstream;
-          }
-          location /rating/ {
-            set $upstream "rating.dev.svc.cluster.local";
-            proxy_pass http://$upstream;
-          }
-          location /order/ {
-            set $upstream "order.dev.svc.cluster.local";
-            proxy_pass http://$upstream;
-          }
-          location /location/ {
-            set $upstream "location.dev.svc.cluster.local";
-            proxy_pass http://$upstream;
-          }
-          location /inventory/ {
-            set $upstream "inventory.dev.svc.cluster.local";
-            proxy_pass http://$upstream;
-          }
-          location /tax/ {
-            set $upstream "tax.dev.svc.cluster.local";
-            proxy_pass http://$upstream;
-          }
-          location /promotion/ {
-            set $upstream "promotion.dev.svc.cluster.local";
-            proxy_pass http://$upstream;
-          }
-          location /search/ {
-            set $upstream "search.dev.svc.cluster.local";
-            proxy_pass http://$upstream;
-          }
-          location /payment/ {
-            set $upstream "payment.dev.svc.cluster.local";
-            proxy_pass http://$upstream;
-          }
-          location /webhook/ {
-            set $upstream "webhook.dev.svc.cluster.local";
-            proxy_pass http://$upstream;
-          }
-          location /sampledata/ {
-            set $upstream "sampledata.dev.svc.cluster.local";
-            proxy_pass http://$upstream;
-          }
-          location /recommendation/ {
-            set $upstream "recommendation.dev.svc.cluster.local";
-            proxy_pass http://$upstream;
-          }
-        }
+  default.conf: "server {\n  listen 80;\n\n  # Kubernetes CoreDNS\n  resolver 10.96.0.10 valid=10s;\n\n  # Proxy settings to prevent upstream connection issues\n  proxy_connect_timeout 60s;\n  proxy_send_timeout 60s;\n  proxy_read_timeout 60s;\n  proxy_buffering on;\n  proxy_buffer_size 128k;\n  proxy_buffers 4 256k;\n  proxy_busy_buffers_size 256k;\n  proxy_max_temp_file_size 2048m;\n  proxy_temp_file_write_size 256k;\n  \n  # Enable keepalive to upstream servers\n  keepalive_timeout 65s;\n  proxy_http_version 1.1;\n  proxy_set_header Connection \"\";\n  # Error handling\n  proxy_next_upstream error timeout http_502 http_503 http_504;\n  proxy_next_upstream_tries 2;\n\n  location /media/ {\n    set $upstream \"media.dev.svc.cluster.local\";\n    proxy_pass http://$upstream;\n  }\n  location /product/ {\n    set $upstream \"product.dev.svc.cluster.local\";\n    proxy_pass http://$upstream;\n  }\n  location /customer/ {\n    set $upstream \"customer.dev.svc.cluster.local\";\n    proxy_pass http://$upstream;\n  }\n  location /cart/ {\n    set $upstream \"cart.dev.svc.cluster.local\";\n    proxy_pass http://$upstream;\n  }\n  location /rating/ {\n    set $upstream \"rating.dev.svc.cluster.local\";\n    proxy_pass http://$upstream;\n  }\n  location /order/ {\n    set $upstream \"order.dev.svc.cluster.local\";\n    proxy_pass http://$upstream;\n  }\n  location /location/ {\n    set $upstream \"location.dev.svc.cluster.local\";\n    proxy_pass http://$upstream;\n  }\n  location /inventory/ {\n    set $upstream \"inventory.dev.svc.cluster.local\";\n    proxy_pass http://$upstream;\n  }\n  location /tax/ {\n    set $upstream \"tax.dev.svc.cluster.local\";\n    proxy_pass http://$upstream;\n  }\n  location /promotion/ {\n    set $upstream \"promotion.dev.svc.cluster.local\";\n    proxy_pass http://$upstream;\n  }\n  location /search/ {\n    set $upstream \"search.dev.svc.cluster.local\";\n    proxy_pass http://$upstream;\n  }\n  location /payment/ {\n    set $upstream \"payment.dev.svc.cluster.local\";\n    proxy_pass http://$upstream;\n  }\n  location /webhook/ {\n    set $upstream \"webhook.dev.svc.cluster.local\";\n    proxy_pass http://$upstream;\n  }\n  location /sampledata/ {\n    set $upstream \"sampledata.dev.svc.cluster.local\";\n    proxy_pass http://$upstream;\n  }\n  location /recommendation/ {\n    set $upstream \"recommendation.dev.svc.cluster.local\";\n    proxy_pass http://$upstream;\n  }\n}\n"
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: nginx
-    namespace: dev
+  name: nginx
+  namespace: dev
 spec:
-    replicas: 1
-    selector:
-        matchLabels:
-            app: nginx
-    template:
-        metadata:
-            labels:
-                app: nginx
-        spec:
-            containers:
-                - name: nginx
-                  image: nginx:1.25-alpine
-                  ports:
-                      - containerPort: 80
-                  volumeMounts:
-                      - name: config
-                        mountPath: /etc/nginx/conf.d
-            volumes:
-                - name: config
-                  configMap:
-                      name: nginx-api-config
+  replicas: 0
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.25-alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: config
+              mountPath: /etc/nginx/conf.d
+      volumes:
+        - name: config
+          configMap:
+            name: nginx-api-config
 ---
 apiVersion: v1
 kind: Service
 metadata:
-    name: nginx
-    namespace: dev
+  name: nginx
+  namespace: dev
 spec:
-    selector:
-        app: nginx
-    ports:
-        - port: 80
-          targetPort: 80
+  selector:
+    app: nginx
+  ports:
+    - port: 80
+      targetPort: 80
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-    name: nginx-api
-    namespace: dev
-    annotations:
-        nginx.ingress.kubernetes.io/use-regex: "true"
-        # Istio sidecar làm response header lớn — tránh 502 từ ingress-nginx
-        nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
-        nginx.ingress.kubernetes.io/proxy-buffers-number: "4"
-        nginx.ingress.kubernetes.io/proxy-busy-buffers-size: "256k"
-        nginx.ingress.kubernetes.io/proxy-body-size: "30m"
+  name: nginx-api
+  namespace: dev
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    # Istio sidecar làm response header lớn — tránh 502 từ ingress-nginx
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
+    nginx.ingress.kubernetes.io/proxy-buffers-number: "4"
+    nginx.ingress.kubernetes.io/proxy-busy-buffers-size: "256k"
+    nginx.ingress.kubernetes.io/proxy-body-size: "30m"
 spec:
-    ingressClassName: nginx
-    rules:
-        - host: api.dev.yas.local.com
-          http:
-              paths:
-                  - path: /
-                    pathType: Prefix
-                    backend:
-                        service:
-                            name: nginx
-                            port:
-                                number: 80
+  ingressClassName: nginx
+  rules:
+    - host: api.dev.yas.local.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx
+                port:
+                  number: 80
