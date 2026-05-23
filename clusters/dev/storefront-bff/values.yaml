@@ -1,6 +1,6 @@
 backend:
   image:
     tag: cbd1419
-  replicaCount: 0
+  replicaCount: 1
   ingress:
     host: storefront.dev.yas.local.com
