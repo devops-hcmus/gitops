@@ -1,7 +1,7 @@
 ui:
   image:
     tag: 3336c7f
-  replicaCount: 0
+  replicaCount: 1
   extraEnvs:
     - name: API_BASE_PATH
       value: http://storefront-bff/api
