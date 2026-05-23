@@ -1,4 +1,4 @@
 backend:
   image:
-    tag: "cbd1419"
+    tag: "3336c7f"
   replicaCount: 1
