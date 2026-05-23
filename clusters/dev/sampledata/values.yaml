@@ -1,4 +1,4 @@
 backend:
   image:
-    tag: "cbd1419"
+    tag: "main"
   replicaCount: 1
