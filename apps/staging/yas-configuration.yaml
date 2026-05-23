@@ -9,7 +9,7 @@ spec:
   project: default
   sources:
     - repoURL: https://github.com/devops-hcmus/yas-cd
-      targetRevision: v0.1.7
+      targetRevision: main
       path: k8s/charts/yas-configuration
       helm:
         valueFiles:
