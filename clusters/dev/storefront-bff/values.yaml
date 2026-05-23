@@ -1,6 +1,6 @@
 backend:
   image:
-    tag: d698907
+    tag: 3336c7f
   replicaCount: 1
   ingress:
     host: storefront.dev.yas.local.com
