@@ -8,7 +8,7 @@ backend:
     enabled: false
   initContainers:
     - name: copy-sample-images
-      image: danzgne/yas-sampledata:main
+      image: danzgne/yas-sampledata:3336c7f
       command: ["sh", "-c", "cp -r /sample-images/sample /images/ && echo 'Images copied'"]
       volumeMounts:
         - name: media-images
