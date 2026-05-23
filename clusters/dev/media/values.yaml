@@ -1,14 +1,14 @@
 backend:
   image:
     tag: "3336c7f"
-  replicaCount: 0
+  replicaCount: 1
   # Route qua nginx API gateway (gitops/clusters/dev/nginx) — có proxy_buffer cho Istio sidecar.
   # Ingress riêng /media → media trực tiếp gây 502 (ảnh, swagger api-docs) khi bật mesh.
   ingress:
     enabled: false
   initContainers:
     - name: copy-sample-images
-      image: danzgne/yas-sampledata:3336c7f
+      image: danzgne/yas-sampledata:113da3b
       command: ["sh", "-c", "cp -r /sample-images/sample /images/ && echo 'Images copied'"]
       volumeMounts:
         - name: media-images
