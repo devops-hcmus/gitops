@@ -1,6 +1,6 @@
 backend:
   image:
     tag: 3336c7f
-  replicaCount: 0
+  replicaCount: 1
   ingress:
     host: backoffice.dev.yas.local.com
